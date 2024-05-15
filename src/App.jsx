@@ -4,6 +4,7 @@ import Perfil from './Components/Perfil'
 import Registro from './Components/Registro'
 import Iniciar_sesion from './Components/Iniciar_sesion'
 import Home from './Components/Home'
+import Crear_producto from './Components/Crear_producto'
 
 function App() {
   const [auth, setauth] = useState({ nombre: "", telefono: "" })
@@ -24,7 +25,7 @@ function App() {
           id="uncontrolled-tab-example"
           className="mb-3"
         >
-          <Tab eventKey="home" title="Tienda">
+          <Tab eventKey="home" title="Tienda" >
             <Home />
           </Tab>
           <Tab eventKey="profile" title="Iniciar sesion" disabled={auth.nombre.length !== 0}>
@@ -34,12 +35,12 @@ function App() {
             <Registro />
           </Tab>
           <Tab eventKey="Perfil" title="Perfil" disabled={auth.nombre.length === 0}>
-
-            <Perfil />
+            <Perfil usuario={auth} cerrarsesion={cerrarsesion} />
+          </Tab>
+          <Tab eventKey="crear producto" title="crear producto" disabled={auth.nombre.length === 0}>
+            <Crear_producto />
           </Tab>
         </Tabs>
-
-
       </div>
     </>
   )

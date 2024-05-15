@@ -23,9 +23,12 @@ const Iniciar_sesion = ({ autenticar }) => {
             fetch(`https://ecomerce-bk.onrender.com/IniciarSesion?CELULAR=${telefono}&CONTRASEÑA=${password}`, requestOptions)
                 .then((response) => response.json())
                 .then((result) => {
-                    setexito(true)
+                    
                     autenticar(result.usuario.NOMBRE, result.usuario.CELULAR)
+                    setexito(true)
                     setcargando(false)
+                    settelefono("")
+                    setpassword("")
                 })
                 .catch((error) => {
                     console.error(error)
